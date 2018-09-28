@@ -1,0 +1,35 @@
+<div class="col-sm-12">
+  <div class="form-group col-sm-8">
+    <label for="categoria">Categoria</label>
+    <select class="form-control" id="categoria" [(ngModel)]="selectedOption" (change)="cargarTipoProducto()">
+      <option *ngFor="let item of categorias" [value]="item.idCategoria" >
+        {{item.descripcion}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group col-sm-8">
+    <label for="tipo">Tipo</label>
+    <select class="form-control" id="tipo" [(ngModel)]="selectedOption">
+      <option *ngFor="let item of tipoProductos" [value]="item.idTipoproducto">
+        {{item.descripcion}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group col-sm-8">
+    <label for="nombre">Nombre del Postre</label>
+    <input type="text" class="form-control" id="nombre" placeholder="ingrese nombre">
+  </div>
+  <div class="form-group  col-sm-5">
+    <label for="precio">Precio</label>
+    <div class="input-group mb-3">
+      <div class="input-group-append">
+        <span class="input-group-text">S/</span>
+      </div>
+      <input type="number" class="form-control" placeholder="ingrese precio">
+    </div>
+  </div>
+  <p>Selected option: {{ selectedOption }}</p>
+  <div class="form-group  col-sm-5">
+    <button (click)="print()" class="btn btn-primary">Registrar</button>
+  </div>
+</div>

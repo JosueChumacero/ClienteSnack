@@ -1,0 +1,31 @@
+<div class="col-sm-12">
+  <h1>Lista de Productos</h1>
+  <table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of mf.data">
+        <td>{{item.tipo}}</td>
+        <td>{{item.nombre}}</td>
+        <td>{{item.precio}}</td>
+        <td><span>
+            <i class="fa fa-edit cursor fa-lg"></i>
+            <i class="fa fa-trash cursor fa-lg"></i></span>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4">
+          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
