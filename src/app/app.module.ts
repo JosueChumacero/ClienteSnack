@@ -14,6 +14,7 @@ import { CreateVentaComponent } from './create-venta/create-venta.component';
 import { VentaComponent } from './venta/venta.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     DataTableModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgHttpLoaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
