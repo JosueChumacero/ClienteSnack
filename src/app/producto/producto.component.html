@@ -11,12 +11,12 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of mf.data">
-        <td>{{item.idProducto}}</td>
+        <td>{{item.idTipoproducto.descripcion}}</td>
         <td>{{item.descripcion}}</td>
-        <td>{{item.precio}}</td>
+        <td>{{item.precio | number : '1.2-2'}}</td>
         <td><span>
-            <i class="fa fa-edit cursor fa-lg"></i>
-            <i class="fa fa-trash cursor fa-lg"></i></span>
+            <i class="fa fa-edit cursor fa-lg" (click)="editProducto(item)"></i>
+            <i class="fa fa-trash cursor fa-lg" (click)="deleteProducto(item)"></i></span>
         </td>
       </tr>
     </tbody>

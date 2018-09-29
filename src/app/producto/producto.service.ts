@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { TipoProductoModel } from '../modelo/tipoproducto.model';
 import { ProductoModel } from '../modelo/producto.model';
 import { RestResponse } from '../modelo/restResponse.model';
-import { ProductoListaModel } from '../modelo/productoLista.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -22,8 +21,11 @@ export class ProductoService {
   public saveOrUpdate(producto: ProductoModel): Observable<RestResponse> {
     return this.http.post<RestResponse>('http://localhost:8080/producto', JSON.stringify(producto));
   }
-  public getProductos(): Observable<ProductoListaModel[]> {
-    return this.http.get<ProductoListaModel[]>('http://localhost:8080/producto');
+  public getProductos(): Observable<ProductoModel[]> {
+    return this.http.get<ProductoModel[]>('http://localhost:8080/producto');
+  }
+  public deleteProducto(idProducto: number): Observable<ProductoModel[]> {
+    return this.http.delete<ProductoModel[]>('http://localhost:8080/producto/' + idProducto);
   }
   public validarProducto(producto: ProductoModel): boolean {
     let isvalid = true;

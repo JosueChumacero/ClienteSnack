@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductoService } from '../producto/producto.service';
-import { CategoriaModel } from '../modelo/categoria.model';
 import { Observable } from 'rxjs';
-import { TipoProductoModel } from '../modelo/tipoproducto.model';
-import { ProductoModel } from '../modelo/producto.model';
-import { OK } from '../modelo/httpstatus.model';
 import { Router } from '@angular/router';
+import { ProductoService } from '../producto.service';
+import { CategoriaModel } from '../../modelo/categoria.model';
+import { TipoProductoModel } from '../../modelo/tipoproducto.model';
+import { ProductoModel } from '../../modelo/producto.model';
+import { OK } from '../../modelo/httpstatus.model';
 
 @Component({
   selector: 'app-create-producto',
@@ -18,6 +18,7 @@ export class CreateProductoComponent implements OnInit {
   private categorias: Array<CategoriaModel>;
   private tipoProductos: Array<TipoProductoModel>;
   private producto = new ProductoModel();
+  private idTipoproducto: number;
   private selectedOption: number;
   private isValid = true;
   private mensage: string;
@@ -44,6 +45,9 @@ export class CreateProductoComponent implements OnInit {
   }
 
   private guardarProducto(): void {
+    this.producto.idTipoproducto = new TipoProductoModel();
+    this.producto.idTipoproducto.idTipoproducto = this.idTipoproducto;
+    console.log(this.producto);
     const validar = this.productoServicio.validarProducto(this.producto);
     if (validar) {
       this.productoServicio.saveOrUpdate(this.producto).subscribe(res => {

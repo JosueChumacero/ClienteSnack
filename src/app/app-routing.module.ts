@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductoComponent } from './producto/producto.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { CreateProductoComponent } from './create-producto/create-producto.component';
 import { CreateVentaComponent } from './create-venta/create-venta.component';
 import { VentaComponent } from './venta/venta.component';
+import { CreateProductoComponent } from './producto/create-producto/create-producto.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/inicio', pathMatch: 'full' },
