@@ -1,0 +1,26 @@
+<div class="col-sm-12">
+  <h2>Editar Producto</h2>
+  <div *ngIf="!isValid" class="alert alert-danger main-form">
+    <strong>Danger!</strong> {{mensage}}
+  </div>
+  <div class="form-group col-sm-8">
+    <label for="tipo">Tipo Poducto</label>
+    <input type="text" class="form-control" [(ngModel)]="producto.idTipoproducto.descripcion" disabled>
+  </div>
+  <div class="form-group col-sm-8">
+    <label for="nombre">Nombre del Producto</label>
+    <input type="text" class="form-control" [(ngModel)]="producto.descripcion" disabled>
+  </div>
+  <div class="form-group  col-sm-5">
+    <label for="precio">Precio</label>
+    <div class="input-group mb-3">
+      <div class="input-group-append">
+        <span class="input-group-text">S/</span>
+      </div>
+      <input type="number" class="form-control" [(ngModel)]="producto.precio">
+    </div>
+  </div>
+  <div class="form-group  col-sm-5">
+    <button (click)="guardarProducto()" class="btn btn-primary">Guardar</button>
+  </div>
+</div>

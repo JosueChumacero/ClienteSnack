@@ -5,7 +5,7 @@ import { ProductoService } from '../producto.service';
 import { CategoriaModel } from '../../modelo/categoria.model';
 import { TipoProductoModel } from '../../modelo/tipoproducto.model';
 import { ProductoModel } from '../../modelo/producto.model';
-import { OK } from '../../modelo/httpstatus.model';
+import { OK, VIGENTE } from '../../modelo/httpstatus.model';
 
 @Component({
   selector: 'app-create-producto',
@@ -18,7 +18,6 @@ export class CreateProductoComponent implements OnInit {
   private categorias: Array<CategoriaModel>;
   private tipoProductos: Array<TipoProductoModel>;
   private producto = new ProductoModel();
-  private idTipoproducto: number;
   private selectedOption: number;
   private isValid = true;
   private mensage: string;
@@ -45,9 +44,7 @@ export class CreateProductoComponent implements OnInit {
   }
 
   private guardarProducto(): void {
-    this.producto.idTipoproducto = new TipoProductoModel();
-    this.producto.idTipoproducto.idTipoproducto = this.idTipoproducto;
-    console.log(this.producto);
+    this.producto.estado = VIGENTE;
     const validar = this.productoServicio.validarProducto(this.producto);
     if (validar) {
       this.productoServicio.saveOrUpdate(this.producto).subscribe(res => {

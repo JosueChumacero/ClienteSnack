@@ -1,5 +1,10 @@
+<div *ngIf="!isValid" class="alert alert-danger main-form">
+  <strong>Danger!</strong> {{mensage}}
+</div>
 <div class="col-sm-12">
-  <h1>Lista de Productos</h1>
+  <div class="form-group  col-sm-9">
+    <h1>Lista de Productos</h1> <button [routerLink]="['/crearProducto']" class="btn btn-primary">Agregar Producto</button>
+  </div>
   <table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
     <thead>
       <tr>

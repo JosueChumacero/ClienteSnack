@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { CreateProductoComponent } from './producto/create-producto/create-producto.component';
+import { EditProductoComponent } from './producto/edit-producto/edit-producto.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CreateProductoComponent } from './producto/create-producto/create-produ
     CreateProductoComponent,
     InicioComponent,
     CreateVentaComponent,
-    VentaComponent
+    VentaComponent,
+    EditProductoComponent
   ],
   imports: [
     BrowserModule,

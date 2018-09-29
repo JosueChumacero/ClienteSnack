@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CategoriaModel } from '../modelo/categoria.model';
 import { Observable } from 'rxjs';
 import { TipoProductoModel } from '../modelo/tipoproducto.model';
@@ -24,8 +24,8 @@ export class ProductoService {
   public getProductos(): Observable<ProductoModel[]> {
     return this.http.get<ProductoModel[]>('http://localhost:8080/producto');
   }
-  public deleteProducto(idProducto: number): Observable<ProductoModel[]> {
-    return this.http.delete<ProductoModel[]>('http://localhost:8080/producto/' + idProducto);
+  public deleteProducto(producto: ProductoModel): Observable<RestResponse> {
+    return this.http.post<RestResponse>('http://localhost:8080/productoDelete', JSON.stringify(producto));
   }
   public validarProducto(producto: ProductoModel): boolean {
     let isvalid = true;
