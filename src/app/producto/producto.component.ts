@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class ProductoComponent implements OnInit {
 
-  public data: Array<ProductoModel>;
+  private data: Array<ProductoModel>;
+  private dataInicial: Array<ProductoModel>;
   private isValid = true;
   private mensage: string;
 
@@ -20,6 +21,7 @@ export class ProductoComponent implements OnInit {
   ngOnInit() {
     this.productoService.getProductos().subscribe(res => {
       this.data = res;
+      this.dataInicial = this.data;
     });
   }
 
@@ -41,4 +43,13 @@ export class ProductoComponent implements OnInit {
     this.router.navigate(['/editarProducto']);
   }
 
+  private filterItems(query) {
+    this.data = this.dataInicial;
+    this.data = this.data.filter(function (producto) {
+      return producto.descripcion.toLowerCase().indexOf(query.toLowerCase()) > -1;
+    });
+  }
+  private filtrar(filtro): void {
+    this.filterItems(filtro);
+  }
 }

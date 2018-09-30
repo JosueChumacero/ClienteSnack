@@ -1,0 +1,21 @@
+<div class="col-sm-12">
+    <h2>Registro Tipo de Producto</h2>
+    <div *ngIf="!isValid" class="alert alert-danger main-form col-sm-8">
+      <strong>Danger!</strong> {{mensage}}
+    </div>
+    <div class="form-group col-sm-8">
+      <label for="categoria">Categoria</label>
+      <select class="form-control" id="categoria" [(ngModel)]="tipoProducto.idCategoria.idCategoria">
+        <option *ngFor="let item of categorias" [value]="item.idCategoria">
+          {{item.descripcion}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-sm-8">
+      <label for="tipo">Nombre Tipo Producto</label>
+      <input type="text" class="form-control" id="nombre" [(ngModel)]="tipoProducto.descripcion" placeholder="ingrese nombre">
+    </div>
+    <div class="form-group  col-sm-5">
+      <button (click)="guardarTipoProducto()" class="btn btn-primary">Registrar</button>
+    </div>
+  </div>

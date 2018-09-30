@@ -3,28 +3,23 @@
 </div>
 <div class="col-sm-12">
   <div class="form-group  col-sm-9">
-    <h1>Lista de Productos</h1> <button [routerLink]="['/crearProducto']" class="btn btn-primary">Agregar Producto</button>
-  </div>
-  <div>
-    <input type="text" class="form-control" id="nombre" (input)="filtrar($event.target.value)" placeholder="ingrese filtro">
+    <h1>Lista Tipo de Producto</h1> <button [routerLink]="['/crearTipoProducto']" class="btn btn-primary">Agregar Tipo
+      Producto</button>
   </div>
   <table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
     <thead>
       <tr>
-        <th>Tipo</th>
+        <th>Categoria</th>
         <th>Nombre</th>
-        <th>Precio</th>
         <th>Opciones</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of mf.data">
-        <td>{{item.idTipoproducto.descripcion}}</td>
+        <td>{{item.idCategoria.descripcion}}</td>
         <td>{{item.descripcion}}</td>
-        <td>{{item.precio | number : '1.2-2'}}</td>
         <td><span>
-            <i class="fa fa-edit cursor fa-lg" (click)="editProducto(item)"></i>
-            <i class="fa fa-trash cursor fa-lg" (click)="deleteProducto(item)"></i></span>
+            <i class="fa fa-trash cursor fa-lg" (click)="deleteTipoProducto(item)"></i></span>
         </td>
       </tr>
     </tbody>

@@ -16,7 +16,11 @@ export class ProductoService {
     return this.http.get<CategoriaModel[]>('http://localhost:8080/categoria');
   }
   public getTipoProductoPorCategoria(idCategoria: number): Observable<TipoProductoModel[]> {
-    return this.http.get<TipoProductoModel[]>('http://localhost:8080/tipoProducto?idCategoria=' + idCategoria);
+    return this.http.get<TipoProductoModel[]>('http://localhost:8080/tipoProductoCategoria?idCategoria=' + idCategoria);
+  }
+
+  public getTipoProducto(): Observable<TipoProductoModel[]> {
+    return this.http.get<TipoProductoModel[]>('http://localhost:8080/tipoProducto');
   }
   public saveOrUpdate(producto: ProductoModel): Observable<RestResponse> {
     return this.http.post<RestResponse>('http://localhost:8080/producto', JSON.stringify(producto));
