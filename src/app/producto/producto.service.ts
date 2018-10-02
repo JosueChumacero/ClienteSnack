@@ -22,14 +22,14 @@ export class ProductoService {
   public getTipoProducto(): Observable<TipoProductoModel[]> {
     return this.http.get<TipoProductoModel[]>('http://localhost:8080/tipoProducto');
   }
-  public saveOrUpdate(producto: ProductoModel): Observable<RestResponse> {
+  public saveOrUpdateProducto(producto: ProductoModel): Observable<RestResponse> {
     return this.http.post<RestResponse>('http://localhost:8080/producto', JSON.stringify(producto));
   }
   public getProductos(): Observable<ProductoModel[]> {
     return this.http.get<ProductoModel[]>('http://localhost:8080/producto');
   }
-  public deleteProducto(producto: ProductoModel): Observable<RestResponse> {
-    return this.http.post<RestResponse>('http://localhost:8080/productoDelete', JSON.stringify(producto));
+  public saveOrUpdateTipoProducto(tipoProducto: TipoProductoModel): Observable<RestResponse> {
+    return this.http.post<RestResponse>('http://localhost:8080/tipoProducto', JSON.stringify(tipoProducto));
   }
   public validarProducto(producto: ProductoModel): boolean {
     let isvalid = true;
@@ -40,6 +40,16 @@ export class ProductoService {
       isvalid = false;
     }
     if (!producto.idTipoproducto) {
+      isvalid = false;
+    }
+    return isvalid;
+  }
+  public validarTipoProducto(tipoProducto: TipoProductoModel): boolean {
+    let isvalid = true;
+    if (!tipoProducto.idCategoria) {
+      isvalid = false;
+    }
+    if (!tipoProducto.descripcion) {
       isvalid = false;
     }
     return isvalid;

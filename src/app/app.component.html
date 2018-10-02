@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3 col-xs-1 p-l-0 p-r-0 collapse in" id="sidebar">
-            <div class="list-group panel">
+            <div class="list-group panel ">
                 <a [routerLink]="['/inicio']" class="list-group-item" style="font-size:40px"><i></i>
                     <span class="hidden-sm-down">SOANDI</span>
                 </a>
@@ -21,11 +21,11 @@
                     aria-expanded="false"><i class="fa fa-money"></i> <span class="hidden-sm-down"> Ventas</span>
                 </a>
                 <div class="collapse" id="ventas">
-                    <a [routerLink]="['/ventas']" style="color: slategray" class="list-group-item" data-toggle="collapse"
-                        aria-expanded="false">Listar
-                    </a>
                     <a [routerLink]="['/crearVenta']" style="color: slategray" class="list-group-item" data-toggle="collapse"
                         aria-expanded="false">Registrar
+                    </a>
+                    <a [routerLink]="['/ventas']" style="color: slategray" class="list-group-item" data-toggle="collapse"
+                        aria-expanded="false">Listar
                     </a>
                 </div>
                 <a href="#reportes" class="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar"

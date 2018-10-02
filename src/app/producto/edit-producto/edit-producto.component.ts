@@ -28,17 +28,23 @@ export class EditProductoComponent implements OnInit {
     this.producto.estado = VIGENTE;
     const validar = this.productoServicio.validarProducto(this.producto);
     if (validar) {
-      this.productoServicio.saveOrUpdate(this.producto).subscribe(res => {
+      this.productoServicio.saveOrUpdateProducto(this.producto).subscribe(res => {
         if (res.responseCode === OK) {
           this.router.navigate(['/productos']);
         } else {
           this.mensage = res.message;
           this.isValid = false;
+          setTimeout(() => {
+            this.isValid = true;
+          }, 2000);
         }
       });
     } else {
       this.isValid = false;
       this.mensage = 'debe ingresar campos obligatorios';
+      setTimeout(() => {
+        this.isValid = true;
+      }, 2000);
     }
   }
 }

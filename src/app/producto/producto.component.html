@@ -1,4 +1,4 @@
-<div *ngIf="!isValid" class="alert alert-danger main-form">
+<div *ngIf="!isValid" class="alert alert-warning col-sm-8">
   <strong>Danger!</strong> {{mensage}}
 </div>
 <div class="col-sm-12">
@@ -22,9 +22,11 @@
         <td>{{item.idTipoproducto.descripcion}}</td>
         <td>{{item.descripcion}}</td>
         <td>{{item.precio | number : '1.2-2'}}</td>
-        <td><span>
-            <i class="fa fa-edit cursor fa-lg" (click)="editProducto(item)"></i>
-            <i class="fa fa-trash cursor fa-lg" (click)="deleteProducto(item)"></i></span>
+        <td>
+          <span>
+            <button class="btn btn-outline-primary btn-sm fa fa-edit" (click)="editProducto(item)"></button>
+            <button class="btn btn-outline-danger btn-sm fa fa-trash" (click)="deleteProducto(item)"></button>
+          </span>
         </td>
       </tr>
     </tbody>

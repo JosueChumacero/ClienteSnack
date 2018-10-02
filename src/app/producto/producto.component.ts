@@ -27,7 +27,7 @@ export class ProductoComponent implements OnInit {
 
   private deleteProducto(producto: ProductoModel): void {
     producto.estado = NO_VIGENTE;
-    this.productoService.saveOrUpdate(producto).subscribe(res => {
+    this.productoService.saveOrUpdateProducto(producto).subscribe(res => {
       if (res.responseCode === OK) {
         this.productoService.getProductos().subscribe(resul => {
           this.data = resul;
@@ -35,6 +35,9 @@ export class ProductoComponent implements OnInit {
       } else {
         this.mensage = res.message;
         this.isValid = false;
+        setTimeout(() => {
+          this.isValid = true;
+        }, 2000);
       }
     });
   }
@@ -48,6 +51,12 @@ export class ProductoComponent implements OnInit {
     this.data = this.data.filter(function (producto) {
       return producto.descripcion.toLowerCase().indexOf(query.toLowerCase()) > -1;
     });
+    if (this.data.length === 0) {
+      this.data = this.dataInicial;
+      this.data = this.data.filter(function (producto) {
+        return producto.idTipoproducto.descripcion.toLowerCase().indexOf(query.toLowerCase()) > -1;
+      });
+    }
   }
   private filtrar(filtro): void {
     this.filterItems(filtro);

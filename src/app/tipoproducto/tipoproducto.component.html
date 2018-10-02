@@ -1,4 +1,4 @@
-<div *ngIf="!isValid" class="alert alert-danger main-form">
+<div *ngIf="!isValid" class="alert alert-warning col-sm-8">
   <strong>Danger!</strong> {{mensage}}
 </div>
 <div class="col-sm-12">
@@ -18,8 +18,10 @@
       <tr *ngFor="let item of mf.data">
         <td>{{item.idCategoria.descripcion}}</td>
         <td>{{item.descripcion}}</td>
-        <td><span>
-            <i class="fa fa-trash cursor fa-lg" (click)="deleteTipoProducto(item)"></i></span>
+        <td>
+          <span>
+            <button class="btn btn-outline-danger btn-sm fa fa-trash" (click)="deleteTipoProducto(item)"></button>
+          </span>
         </td>
       </tr>
     </tbody>
