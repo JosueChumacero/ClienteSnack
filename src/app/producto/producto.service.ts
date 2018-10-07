@@ -31,6 +31,9 @@ export class ProductoService {
   public saveOrUpdateTipoProducto(tipoProducto: TipoProductoModel): Observable<RestResponse> {
     return this.http.post<RestResponse>('http://localhost:8080/tipoProducto', JSON.stringify(tipoProducto));
   }
+  public getProductosLikeDescripcion(descripcion: string): Observable<ProductoModel[]> {
+    return this.http.get<ProductoModel[]>('http://localhost:8080/productoDescripcion?descripcion=' + descripcion);
+  }
   public validarProducto(producto: ProductoModel): boolean {
     let isvalid = true;
     if (!producto.descripcion) {

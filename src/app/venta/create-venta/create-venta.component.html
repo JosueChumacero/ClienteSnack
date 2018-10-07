@@ -1,3 +1,8 @@
-<p>
-  create-venta works!
-</p>
+<div class="well">
+  <form>
+      <input type="text" class="form-control" id="nombre" (input)="filtrar($event.target.value)" placeholder="Buscar producto">
+  </form>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of productos">{{item.idTipoproducto.descripcion}} - {{item.descripcion}}</li>
+  </ul>
+</div>

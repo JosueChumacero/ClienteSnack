@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { ProductoService } from '../../producto/producto.service';
+import { ProductoModel } from '../../modelo/producto.model';
 
 @Component({
   selector: 'app-create-venta',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateVentaComponent implements OnInit {
 
-  constructor() { }
+  private buscarProducto: FormControl;
+  private productos: Array<ProductoModel>;
+  constructor(private productoServicio: ProductoService) {
+  }
 
   ngOnInit() {
+  }
+
+  private filtrar(filtro): void {
+    this.productoServicio.getProductosLikeDescripcion(filtro).subscribe(res => {
+      this.productos = res;
+    });
   }
 
 }
