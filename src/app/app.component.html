@@ -1,13 +1,13 @@
 <ng-http-loader></ng-http-loader>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3 col-xs-1 p-l-0 p-r-0 collapse in" id="sidebar">
+        <div class="col-md-3 ">
             <div class="list-group panel ">
                 <a [routerLink]="['/inicio']" class="list-group-item" style="font-size:40px"><i></i>
                     <span class="hidden-sm-down">SOANDI</span>
                 </a>
-                <a href="#producto" class="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar"
-                    aria-expanded="false"><i class="fa fa-cutlery"></i> <span class="hidden-sm-down"> Mantenimiento</span>
+                <a href="#producto" class="list-group-item collapsed" data-toggle="collapse" aria-expanded="false"><i
+                        class="fa fa-cutlery"></i> <span class="hidden-sm-down"> Mantenimiento</span>
                 </a>
                 <div class="collapse" id="producto">
                     <a [routerLink]="['/productos']" style="color: slategray" class="list-group-item" data-toggle="collapse"
@@ -17,8 +17,8 @@
                         aria-expanded="false">Lista Tipo Producto
                     </a>
                 </div>
-                <a href="#ventas" class="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar"
-                    aria-expanded="false"><i class="fa fa-money"></i> <span class="hidden-sm-down"> Ventas</span>
+                <a href="#ventas" class="list-group-item collapsed" data-toggle="collapse" aria-expanded="false"><i
+                        class="fa fa-money"></i> <span class="hidden-sm-down"> Ventas</span>
                 </a>
                 <div class="collapse" id="ventas">
                     <a [routerLink]="['/crearVenta']" style="color: slategray" class="list-group-item" data-toggle="collapse"
@@ -28,8 +28,8 @@
                         aria-expanded="false">Listar
                     </a>
                 </div>
-                <a href="#reportes" class="list-group-item collapsed" data-toggle="collapse" data-parent="#sidebar"
-                    aria-expanded="false"><i class="fa fa-calendar-check-o"></i> <span class="hidden-sm-down"> Reportes</span>
+                <a href="#reportes" class="list-group-item collapsed" data-toggle="collapse" aria-expanded="false"><i
+                        class="fa fa-calendar-check-o"></i> <span class="hidden-sm-down"> Reportes</span>
                 </a>
                 <div class="collapse" id="reportes">
                     <a [routerLink]="['/inicio']" style="color: slategray" class="list-group-item" data-toggle="collapse"
@@ -43,12 +43,13 @@
         </div>
         <main class="col-md-9 col-xs-11 p-l-2 p-t-2">
             <div class="container">
-                <div class="row">
-                    <div class="col align-self-start"><a href="#sidebar" data-toggle="collapse" class="text-left"><i
-                                class="fa fa-navicon fa-lg"></i></a></div>
-                    <div class="col align-self-end" style="text-align: right"><a [routerLink]="['/inicio']">{{date_expression
-                            | date:'short'}}</a></div>
-                </div>
+                <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                    <div class="navbar-collapse">
+                        <ul class="navbar-nav mr-auto mt-md-0 "></ul>
+                        <ul class="navbar-nav my-lg-0 ml-auto"><a [routerLink]="['/inicio']">{{date_expression
+                                | date:'short'}}</a></ul>
+                    </div>
+                </nav>
             </div>
 
             <hr>

@@ -1,8 +1,88 @@
-<div class="well">
-  <form>
-      <input type="text" class="form-control" id="nombre" (input)="filtrar($event.target.value)" placeholder="Buscar producto">
-  </form>
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let item of productos">{{item.idTipoproducto.descripcion}} - {{item.descripcion}}</li>
-  </ul>
+<h2>Resgistro de Venta</h2>
+<hr>
+<div *ngIf="!isValid" class="alert alert-warning col-sm-8">
+  <strong>*</strong> {{mensaje}}
+</div>
+<div class="form-row">
+  <div class="col-7">
+    <input type="text" class="form-control" id="nombre" [disabled]="bloquearGuardar" [(ngModel)]="venta.nombre" placeholder="Ingrese Nombre">
+  </div>
+</div>
+<hr>
+<div class="form-row">
+  <div class="col-7">
+    <input type="text" class="form-control" id="producto" [disabled]="bloquearGuardar" (input)="filtrar($event.target.value)" placeholder="Buscar producto">
+    <ul class="list-group">
+      <li class="list-group-item cursor" *ngFor="let item of productos" (click)="selecionProducto(item)">{{item.idTipoproducto.descripcion}}
+        - {{item.descripcion}}</li>
+    </ul>
+  </div>
+</div>
+<hr>
+<div class="form-row">
+  <div class="col-7">
+    <input type="text" class="form-control" disabled [(ngModel)]="detalleVenta.idProducto.descripcion">
+  </div>
+  <div class="col">
+    <input type="text" class="form-control" disabled [(ngModel)]="detalleVenta.idProducto.precio">
+  </div>
+  <div class="col">
+    <input type="number" required class="form-control" placeholder="Cantidad" [disabled]="bloquearGuardar" [(ngModel)]="detalleVenta.cantidad">
+  </div>
+  <div class="col">
+    <button class="btn btn-outline-primary btn-lg fa fa-plus" [disabled]="bloquearGuardar" (click)="agregarVenta()"></button>
+  </div>
+</div>
+<hr>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Total</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listaProducto">
+        <td>{{item.idProducto.idTipoproducto.descripcion}}-{{item.idProducto.descripcion}}</td>
+        <td>{{item.idProducto.precio | number : '1.2-2'}}</td>
+        <td>{{item.cantidad | number : '1.2-2'}}</td>
+        <td>{{item.idProducto.precio * item.cantidad | number : '1.2-2'}}</td>
+        <td>
+          <span>
+            <button class="btn btn-outline-danger btn-sm fa fa-trash" (click)="eliminarDetalleVenta(item)" [disabled]="bloquearGuardar"></button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="form-row">
+  <div class="col-3">
+    <label>Total Venta</label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text">S/.</div>
+      </div>
+      <input type="number" style="text-align: right" class="form-control" disabled [(ngModel)]="totalVenta">
+    </div>
+  </div>
+</div>
+<hr>
+<div class="form-row">
+  <div class="col-1">
+    <button [routerLink]="['/ventas']" class="btn btn-primary fa fa-mail-reply" data-toggle="tooltip" data-placement="top"
+      title="Regresar!"></button>
+  </div>
+  <div class="col-8">
+  </div>
+  <div class="col-3">
+    <button class="btn btn-primary fa fa-print fa-lg" data-toggle="tooltip" data-placement="top"
+      title="Imprimir!" [disabled]="bloquearImprimir"></button>
+    <button (click)="guardarVenta()" class="btn btn-primary fa fa-save fa-lg" data-toggle="tooltip" data-placement="top"
+      title="Guardar!" [disabled]="bloquearGuardar"></button>
+  </div>
 </div>
