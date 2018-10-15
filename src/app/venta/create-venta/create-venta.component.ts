@@ -89,7 +89,7 @@ export class CreateVentaComponent implements OnInit {
   private guardarVenta(): void {
     if (this.venta.nombre) {
       if (this.listaProducto.length > 0) {
-        this.venta.detalleVenta = this.listaProducto;
+        this.venta.detalleVentaList = this.listaProducto;
         this.venta.fecha = new Date();
         this.venta.total = this.totalVenta;
         this.venta.estado = VIGENTE;

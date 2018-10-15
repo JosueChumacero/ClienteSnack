@@ -7,9 +7,9 @@ export class VentaModel {
     public nombre: string;
     public fecha: Date;
     public estado: string;
-    public detalleVenta: Array<DetalleVentaModel>;
+    public detalleVentaList: Array<DetalleVentaModel>;
 
     constructor() {
-        this.detalleVenta = new Array<DetalleVentaModel>();
+        this.detalleVentaList = new Array<DetalleVentaModel>();
     }
 }

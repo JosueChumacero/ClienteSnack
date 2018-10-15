@@ -5,13 +5,15 @@
 </div>
 <div class="form-row">
   <div class="col-7">
-    <input type="text" class="form-control" id="nombre" [disabled]="bloquearGuardar" [(ngModel)]="venta.nombre" placeholder="Ingrese Nombre">
+    <input type="text" class="form-control" id="nombre" [disabled]="bloquearGuardar" [(ngModel)]="venta.nombre"
+      placeholder="Ingrese Nombre">
   </div>
 </div>
 <hr>
 <div class="form-row">
   <div class="col-7">
-    <input type="text" class="form-control" id="producto" [disabled]="bloquearGuardar" (input)="filtrar($event.target.value)" placeholder="Buscar producto">
+    <input type="text" class="form-control" id="producto" [disabled]="bloquearGuardar" (input)="filtrar($event.target.value)"
+      placeholder="Buscar producto">
     <ul class="list-group">
       <li class="list-group-item cursor" *ngFor="let item of productos" (click)="selecionProducto(item)">{{item.idTipoproducto.descripcion}}
         - {{item.descripcion}}</li>
@@ -74,15 +76,17 @@
 <hr>
 <div class="form-row">
   <div class="col-1">
-    <button [routerLink]="['/ventas']" class="btn btn-primary fa fa-mail-reply" data-toggle="tooltip" data-placement="top"
-      title="Regresar!"></button>
+    <ng-template #regresar>Listado de Ventas</ng-template>
+    <button [routerLink]="['/ventas']" class="btn btn-primary fa fa-mail-reply" [ngbTooltip]="regresar"></button>
   </div>
   <div class="col-8">
   </div>
   <div class="col-3">
-    <button class="btn btn-primary fa fa-print fa-lg" data-toggle="tooltip" data-placement="top"
-      title="Imprimir!" [disabled]="bloquearImprimir"></button>
-    <button (click)="guardarVenta()" class="btn btn-primary fa fa-save fa-lg" data-toggle="tooltip" data-placement="top"
-      title="Guardar!" [disabled]="bloquearGuardar"></button>
+    <ng-template #imprimir>Imprimir Venta!</ng-template>
+    <ng-template #guardar>Guardar Venta!</ng-template>
+    <button class="btn btn-primary fa fa-print fa-lg" data-toggle="tooltip" [ngbTooltip]="imprimir"
+      [disabled]="bloquearImprimir"></button>
+    <button (click)="guardarVenta()" class="btn btn-primary fa fa-save fa-lg" [ngbTooltip]="guardar"
+      [disabled]="bloquearGuardar"></button>
   </div>
 </div>

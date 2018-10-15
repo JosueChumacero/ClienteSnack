@@ -14,4 +14,7 @@ export class VentaService {
   public saveOrUpdateVenta(venta: VentaModel): Observable<RestResponse> {
     return this.http.post<RestResponse>('http://localhost:8080/venta', JSON.stringify(venta));
   }
+  public getVentas(): Observable<VentaModel[]> {
+    return this.http.get<VentaModel[]>('http://localhost:8080/venta');
+  }
 }

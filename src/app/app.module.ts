@@ -9,7 +9,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ProductoComponent } from './producto/producto.component';
 import {DataTableModule} from 'angular-6-datatable';
 import { InicioComponent } from './inicio/inicio.component';
-import { VentaComponent } from './venta/venta.component';
+import { VentaComponent, NgbdModalContent } from './venta/venta.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgHttpLoaderModule } from 'ng-http-loader';
@@ -29,8 +29,10 @@ import { CreateTipoproductoComponent } from './tipoproducto/create-tipoproducto/
     VentaComponent,
     EditProductoComponent,
     TipoproductoComponent,
-    CreateTipoproductoComponent
+    CreateTipoproductoComponent,
+    NgbdModalContent
   ],
+  entryComponents: [NgbdModalContent],
   imports: [
     BrowserModule,
     AngularFontAwesomeModule,
