@@ -2,44 +2,52 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3 ">
-            <div class="list-group panel ">
-                <a [routerLink]="['/inicio']" class="list-group-item" style="font-size:40px"><i></i>
-                    <span class="hidden-sm-down">SOANDI</span>
-                </a>
-                <a href="#producto" class="list-group-item collapsed" data-toggle="collapse" aria-expanded="false"><i
-                        class="fa fa-cutlery"></i> <span class="hidden-sm-down"> Mantenimiento</span>
-                </a>
-                <div class="collapse" id="producto">
-                    <a [routerLink]="['/productos']" style="color: slategray" class="list-group-item" data-toggle="collapse"
-                        aria-expanded="false">Lista Productos
-                    </a>
-                    <a [routerLink]="['/tipoProducto']" style="color: slategray" class="list-group-item" data-toggle="collapse"
-                        aria-expanded="false">Lista Tipo Producto
-                    </a>
-                </div>
-                <a href="#ventas" class="list-group-item collapsed" data-toggle="collapse" aria-expanded="false"><i
-                        class="fa fa-money"></i> <span class="hidden-sm-down"> Ventas</span>
-                </a>
-                <div class="collapse" id="ventas">
-                    <a [routerLink]="['/crearVenta']" style="color: slategray" class="list-group-item" data-toggle="collapse"
-                        aria-expanded="false">Registrar
-                    </a>
-                    <a [routerLink]="['/ventas']" style="color: slategray" class="list-group-item" data-toggle="collapse"
-                        aria-expanded="false">Listar
-                    </a>
-                </div>
-                <a href="#reportes" class="list-group-item collapsed" data-toggle="collapse" aria-expanded="false"><i
-                        class="fa fa-calendar-check-o"></i> <span class="hidden-sm-down"> Reportes</span>
-                </a>
-                <div class="collapse" id="reportes">
-                    <a [routerLink]="['/inicio']" style="color: slategray" class="list-group-item" data-toggle="collapse"
-                        aria-expanded="false">Diarios
-                    </a>
-                    <a [routerLink]="['/inicio']" style="color: slategray" class="list-group-item" data-toggle="collapse"
-                        aria-expanded="false">Mensuales
-                    </a>
-                </div>
-            </div>
+            <a [routerLink]="['/inicio']" class="list-group-item" style="font-size:40px"><i></i>
+                <span class="hidden-sm-down">SOANDI</span>
+            </a>
+            <ngb-accordion [closeOthers]="true" activeIds="titulo">
+                <ngb-panel id="mantenimiento">
+                    <ng-template ngbPanelTitle>
+                        <span>Mantenimiento</span>
+                    </ng-template>
+                    <ng-template ngbPanelContent>
+                        <div class="list-group" id="list-tab" role="tablist">
+                            <a [routerLink]="['/productos']" style="color: slategray" class="list-group-item list-group-item-action"
+                                data-toggle="collapse" aria-expanded="false">Lista Productos
+                            </a>
+                            <a [routerLink]="['/tipoProducto']" style="color: slategray" class="list-group-item list-group-item-action"
+                                data-toggle="collapse" aria-expanded="false">Lista Tipo Producto
+                            </a>
+                        </div>
+                    </ng-template>
+                </ngb-panel>
+                <ngb-panel id="ventas">
+                    <ng-template ngbPanelTitle>
+                        <span>Ventas</span>
+                    </ng-template>
+                    <ng-template ngbPanelContent>
+                        <a [routerLink]="['/crearVenta']" style="color: slategray" class="list-group-item list-group-item-action"
+                            data-toggle="collapse" aria-expanded="false">Registrar
+                        </a>
+                        <a [routerLink]="['/ventas']" style="color: slategray" class="list-group-item list-group-item-action"
+                            data-toggle="collapse" aria-expanded="false">Listar
+                        </a>
+                    </ng-template>
+                </ngb-panel>
+                <ngb-panel id="reportes">
+                    <ng-template ngbPanelTitle>
+                        <span>Reportes</span>
+                    </ng-template>
+                    <ng-template ngbPanelContent>
+                        <a [routerLink]="['/inicio']" style="color: slategray" class="list-group-item list-group-item-action"
+                            data-toggle="collapse" aria-expanded="false">Diarios
+                        </a>
+                        <a [routerLink]="['/inicio']" style="color: slategray" class="list-group-item list-group-item-action"
+                            data-toggle="collapse" aria-expanded="false">Mensuales
+                        </a>
+                    </ng-template>
+                </ngb-panel>
+            </ngb-accordion>
         </div>
         <main class="col-md-9 col-xs-11 p-l-2 p-t-2">
             <div class="container">

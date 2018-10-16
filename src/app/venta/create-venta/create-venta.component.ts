@@ -19,7 +19,6 @@ export class CreateVentaComponent implements OnInit {
   private venta = new VentaModel();
   private listaProducto = new Array<DetalleVentaModel>();
   private detalleVenta = new DetalleVentaModel();
-  private nombreProducto: string;
   private totalVenta: number;
   private mensaje: string;
   private isValid = true;
@@ -30,6 +29,11 @@ export class CreateVentaComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (sessionStorage.getItem('venta')) {
+      this.venta = JSON.parse(sessionStorage.getItem('venta'));
+      this.listaProducto = this.venta.detalleVentaList;
+      this.calcularTotalVenta();
+    }
   }
 
   private filtrar(filtro): void {
@@ -43,9 +47,9 @@ export class CreateVentaComponent implements OnInit {
   }
 
   private selecionProducto(producto: ProductoModel): void {
-    console.log(producto);
     this.productos = new Array<ProductoModel>();
     this.detalleVenta.idProducto = producto;
+    this.detalleVenta.precio = producto.precio;
   }
   private agregarVenta(): void {
     if (this.validarDetalleVenta(this.detalleVenta)) {

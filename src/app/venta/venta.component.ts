@@ -4,6 +4,7 @@ import { VentaModel } from '../modelo/venta.model';
 import { NgbModalConfig, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductoModel } from '../modelo/producto.model';
 import { DetalleVentaModel } from 'src/app/modelo/detalleventa.model';
+import { Router } from '@angular/router';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -44,11 +45,7 @@ import { DetalleVentaModel } from 'src/app/modelo/detalleventa.model';
 export class NgbdModalContent {
   @Input() venta = new VentaModel();
 
-  constructor(public activeModal: NgbActiveModal) {
-    this.venta.detalleVentaList = new Array<DetalleVentaModel>();
-    this.venta.detalleVentaList.push(new DetalleVentaModel());
-    console.log(this.venta);
-  }
+  constructor(public activeModal: NgbActiveModal) { }
 }
 @Component({
   selector: 'app-venta',
@@ -58,19 +55,21 @@ export class NgbdModalContent {
 })
 export class VentaComponent implements OnInit {
 
-  private listaVentas: Array<VentaModel>;
-  constructor(private ventaServicio: VentaService, config: NgbModalConfig, private modalService: NgbModal) {
+  private data: Array<VentaModel>;
+  constructor(private ventaServicio: VentaService, private router: Router,
+    config: NgbModalConfig, private modalService: NgbModal) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
 
   ngOnInit() {
     this.cargarVentas();
+    sessionStorage.removeItem('venta');
   }
 
   private cargarVentas(): void {
     this.ventaServicio.getVentas().subscribe(res => {
-      this.listaVentas = res;
+      this.data = res;
     });
   }
 
@@ -79,4 +78,8 @@ export class VentaComponent implements OnInit {
     modalRef.componentInstance.venta = itemVenta;
   }
 
+  private editarVenta(itemVenta: VentaModel): void {
+    sessionStorage.setItem('venta', JSON.stringify(itemVenta));
+    this.router.navigate(['/crearVenta']);
+  }
 }

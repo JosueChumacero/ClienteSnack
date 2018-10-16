@@ -1,7 +1,7 @@
 <h2>Lista ventas</h2>
 <hr>
 <div>
-  <table class="table">
+  <table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
     <thead>
       <tr>
         <th>IdVenta</th>
@@ -12,21 +12,29 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of listaVentas">
+      <tr *ngFor="let item of mf.data">
         <td>{{item.idVenta}}</td>
         <td>{{item.nombre}}</td>
         <td>{{item.fecha | date:'dd/MM/yyyy' }}</td>
         <td>{{item.total | number : '1.2-2'}}</td>
         <td>
           <span>
-            <ng-template #eliminar>Eliminar registro!</ng-template>
-            <ng-template #detalle>Ver detalle venta</ng-template>
+            <ng-template #eliminar>Eliminar Registro!</ng-template>
+            <ng-template #detalle>Ver detalle Venta</ng-template>
+            <ng-template #editar>Editar Venta</ng-template>
             <button class="btn btn-outline-primary btn-sm fa fa-align-left" [ngbTooltip]="detalle" (click)="open(item)"></button>
-            <button class="btn btn-outline-warning btn-sm fa fa-edit"></button>
+            <button class="btn btn-outline-warning btn-sm fa fa-edit" [ngbTooltip]="detalle" (click)="editarVenta(item)"></button>
             <button class="btn btn-outline-danger btn-sm fa fa-trash" [ngbTooltip]="eliminar"></button>
           </span>
         </td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4">
+          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </div>
